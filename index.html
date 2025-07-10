@@ -864,9 +864,11 @@
       
       
 
-        emailjs.init({
-            publicKey: "r0tvVuUog4Qi_maFT" // Replace with your Public Key
-        });
+        window.onload = function () {
+    emailjs.init({
+      publicKey: "fuES_T0bTOy9yFjbE" // ✅ Replace with your actual Public Key
+    });
+  };
 
         function sendemail(event) {
             event.preventDefault(); // Stop form reload
