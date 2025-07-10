@@ -1,32 +1,26 @@
-window.addEventListener('DOMContentLoaded', () => {
-    // ✅ JSON Data
+document.addEventListener('DOMContentLoaded', () => {
     const students = [
-      {
-        "name": "Alice Johnson",
-        "role": "Web Developer",
-        "photo": "https://randomuser.me/api/portraits/women/44.jpg",
-        "review": "This course changed my life! I now work at a top tech company."
-      },
-      {
-        "name": "David Smith",
-        "role": "UI/UX Designer",
-        "photo": "https://randomuser.me/api/portraits/men/32.jpg",
-        "review": "Amazing! I built my portfolio and got hired fast."
-      },
-      {
-        "name": "Sophia Lee",
-        "role": "Frontend Engineer",
-        "photo": "https://randomuser.me/api/portraits/women/68.jpg",
-        "review": "I’m now confident in HTML, Tailwind, and JavaScript!"
-      }
+      { name: "Alice Johnson", role: "Web Developer", photo: "https://randomuser.me/api/portraits/women/44.jpg", review: "This course changed my life! I now work at a top tech company." },
+      { name: "David Smith", role: "UI/UX Designer", photo: "https://randomuser.me/api/portraits/men/32.jpg", review: "Amazing! I built my portfolio and got hired fast." },
+      { name: "Sophia Lee", role: "Frontend Engineer", photo: "https://randomuser.me/api/portraits/women/68.jpg", review: "I’m now confident in HTML, Tailwind, and JavaScript!" },
+      { name: "Michael Brown", role: "Full Stack Developer", photo: "https://randomuser.me/api/portraits/men/75.jpg", review: "The teaching was incredible. Highly recommended!" },
+      { name: "Emily Davis", role: "Backend Developer", photo: "https://randomuser.me/api/portraits/women/21.jpg", review: "Helped me get my first developer job!" },
+      { name: "John Wilson", role: "React Developer", photo: "https://randomuser.me/api/portraits/men/22.jpg", review: "Built my dream portfolio!" },
+      { name: "Sophia Miller", role: "Designer", photo: "https://randomuser.me/api/portraits/women/30.jpg", review: "I can now design beautiful interfaces." },
+      { name: "Chris Taylor", role: "Software Engineer", photo: "https://randomuser.me/api/portraits/men/45.jpg", review: "A complete game-changer for my career." },
+      { name: "Olivia Moore", role: "App Developer", photo: "https://randomuser.me/api/portraits/women/55.jpg", review: "Now I create amazing mobile apps." },
+      { name: "Daniel Anderson", role: "Tech Lead", photo: "https://randomuser.me/api/portraits/men/60.jpg", review: "I lead a team thanks to these skills." }
     ];
   
     const slider = document.getElementById('slider');
   
-    // ✅ Render Slides
-    students.forEach((student) => {
+    // Duplicate students for infinite loop effect
+    const loopStudents = [...students, ...students];
+  
+    // Create slides
+    loopStudents.forEach(student => {
       const card = document.createElement('div');
-      card.className = "w-72 p-4 bg-white rounded-lg shadow-lg text-center transition-all duration-500 ease-in-out";
+      card.className = "slide w-72 flex-shrink-0 p-4 bg-white rounded-lg shadow-lg text-center";
       card.innerHTML = `
         <img src="${student.photo}" alt="${student.name}" class="w-24 h-24 mx-auto rounded-full mb-4">
         <h3 class="text-xl font-bold">${student.name}</h3>
@@ -36,26 +30,20 @@ window.addEventListener('DOMContentLoaded', () => {
       slider.appendChild(card);
     });
   
-    const cards = slider.children;
-    let currentIndex = 0;
+    const slides = slider.children;
+    let offset = 0;
   
-    function updateCarousel() {
-      for (let i = 0; i < cards.length; i++) {
-        cards[i].classList.remove('active-card', 'side-card');
-        cards[i].style.order = (i - currentIndex + students.length) % students.length;
-        if (i === currentIndex) {
-          cards[i].classList.add('active-card');
-        } else {
-          cards[i].classList.add('side-card');
-        }
+    function animateSlider() {
+      offset += 0.5; // speed of movement
+      if (offset >= slides[0].clientWidth + 24) { // slide width + gap
+        offset = 0;
+        slider.appendChild(slides[0]); // move first slide to end
       }
+      slider.style.transform = `translateX(-${offset}px)`;
+  
+      requestAnimationFrame(animateSlider);
     }
   
-    updateCarousel();
-  
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % students.length;
-      updateCarousel();
-    }, 2000);
+    animateSlider();
   });
   
