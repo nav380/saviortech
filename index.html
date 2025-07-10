@@ -625,7 +625,7 @@
                     <div class="md:w-1/2" data-aos="fade-left">
                         <div class="bg-white p-8 rounded-lg shadow-lg">
                             <h3 class="text-2xl font-bold mb-6">Get in touch </h3>
-                            <form id="contact-form" onSubmit="sendemail()">
+                            <form id="contact-form" onsubmit="sendemail(event)">
                                 <div class="mb-4">
                                     <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
                                     <input type="text" id="name"
@@ -863,33 +863,30 @@
 
 
 
-        function sendemail() {
-            // Prevent default form submission
-            event.preventDefault();
-            alert('Sending email...');
+        emailjs.init('fuES_T0bTOy9yFjbE'); // Your Public Key
 
+  function sendemail(event) {
+      event.preventDefault();
+      alert('Sending email...');
 
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const message = document.getElementById('message').value;
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
-
-            emailjs.send('service_faoo49p', 'template_sfcfxjr', {
-                user_name: name,
-                user_email: email,
-                user_phone: phone,
-                message: message
-            }, 'fuES_T0bTOy9yFjbE')
-                .then(() => {
-                    alert('Email sent successfully!');
-                }, (error) => {
-                    console.error('FAILED...', error);
-                    alert('Failed to send email.');
-                });
-
-
-        }
+      emailjs.send('service_faoo49p', 'template_sfcfxjr', {
+          user_name: name,
+          user_email: email,
+          user_phone: phone,
+          message: message
+      })
+      .then(() => {
+          alert('Email sent successfully!');
+      }, (error) => {
+          console.error('FAILED...', error);
+          alert('Failed to send email.');
+      });
+  }
     </script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </body>
