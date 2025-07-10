@@ -29,6 +29,15 @@
             opacity: 0.6;
             z-index: 5;
         }
+
+        .bg-slider {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* STICKY */
+            transition: background-image 1s ease-in-out;
+            /* Smooth fade */
+        }
     </style>
 
 
@@ -151,7 +160,7 @@
 </head>
 
 <body class="font-sans text-gray-800 bg-gray-50 overflow-x-hidden">
-    <header class="backdrop-blur-2xl p-2 fixed top-0 left-0 z-50 bg-white/10 border-b-white w-full">
+    <header class="backdrop-blur-2xl p-2 fixed top-0 left-0 z-100 bg-white/10 border-b-white w-full">
         <div class="flex items-center justify-between w-full px-20">
             <div class="flex items-center space-x-2">
                 <img src="../static/images/logo.svg" alt="SAVIORTECH Logo" class="w-8 h-8">
@@ -169,6 +178,12 @@
     </header>
 
     <main>
+        <!-- Sticky Background Section -->
+        <div id="sticky-bg" class="bg-slider h-screen relative flex items-center justify-center">
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div> <!-- Optional Overlay -->
+            <h1 class="relative z-10 text-white text-5xl font-bold">Welcome to Placement Help</h1>
+        </div>
+
         <!-- Hero banner -->
         <section id="hero-banner" class="bg-gradient">
             <div class="md:px-10">
