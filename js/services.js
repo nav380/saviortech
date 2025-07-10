@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     additionalServices.forEach(service => {
       const card = document.createElement('div');
-      card.className = "bg-white p-6 rounded-lg shadow hover:shadow-lg transition duration-300 cursor-pointer text-gray-800 font-medium text-lg";
+      card.className = "bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer text-gray-800 font-medium text-lg";
       card.textContent = service.title;
       grid.appendChild(card);
     });
