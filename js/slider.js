@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
   
     const slider = document.getElementById('slider');
-    const allStudents = [...students, ...students, ...students]; // 3x for smooth loop
   
-    allStudents.forEach(student => {
+    // Duplicate slides for seamless scroll
+    const loopSlides = [...students, ...students, ...students];
+  
+    loopSlides.forEach(student => {
       const card = document.createElement('div');
-      card.className = "slide w-72 flex-shrink-0 p-4 bg-white rounded-lg shadow-lg text-center transition-all duration-500 ease-in-out";
+      card.className = "slide w-72 flex-shrink-0 p-4 bg-white rounded-lg shadow-lg text-center";
       card.innerHTML = `
         <img src="${student.photo}" alt="${student.name}" class="w-24 h-24 mx-auto rounded-full mb-4">
         <h3 class="text-xl font-bold">${student.name}</h3>
@@ -27,34 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
       slider.appendChild(card);
     });
   
-    const slideWidth = slider.querySelector('.slide').offsetWidth + 24; // slide + gap
+    const slideWidth = slider.querySelector('.slide').offsetWidth + 24; // slide width + gap
     let offset = 0;
   
-    function updateClasses() {
-      const centerIndex = Math.round(offset / slideWidth) + 1; // +1 for center
-      const slides = slider.querySelectorAll('.slide');
-  
-      slides.forEach((slide, index) => {
-        slide.classList.remove('center-slide', 'side-slide');
-  
-        const relativePos = (index - centerIndex + slides.length) % slides.length;
-  
-        if (relativePos === 0) {
-          slide.classList.add('center-slide');
-        } else if (relativePos === 1 || relativePos === slides.length - 1) {
-          slide.classList.add('side-slide');
-        }
-      });
-    }
-  
     function animateSlider() {
-      offset += 0.5; // speed
+      offset += 0.3; // speed
       slider.style.transform = `translateX(-${offset}px)`;
-      updateClasses();
   
-      // Reset invisibly when offset too big
       if (offset >= slideWidth * students.length) {
-        offset -= slideWidth * students.length;
+        offset -= slideWidth * students.length; // seamless loop
         slider.style.transform = `translateX(-${offset}px)`;
       }
   
