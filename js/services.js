@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
 
-    const grid = document.getElementById('services-grid');
+    const grid = document.getElementById('extra-services-grid');
 
     additionalServices.forEach(service => {
         const card = document.createElement('div');
