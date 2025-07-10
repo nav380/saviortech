@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const additionalServices = [
-      { title: "Management Reporting System" },
-      { title: "Machine Maintenance" },
-      { title: "Time and Action" },
-      { title: "HRMS" },
-      { title: "Compliance Management" },
-      { title: "Visitor Management" },
-      { title: "Virtual Showroom" },
-      { title: "Vendor Portal" }
-    ];
+        { title: "Resume Building & Optimization" },
+        { title: "LinkedIn Profile Makeover" },
+        { title: "Mock Interviews" },
+        { title: "Career Counseling & Guidance" },
+        { title: "Skill Assessment Tests" },
+        { title: "Soft Skills & Communication Training" },
+        { title: "Job Alerts & Placement Notifications" },
+        { title: "Freelancing & Gig Work Guidance" },
+        { title: "Internship Assistance" },
+        { title: "Overseas Placement Assistance" },
+        { title: "Portfolio Website Development" },
+        { title: "Access to Exclusive Job Fairs" }
+      ];
+      
   
     const grid = document.getElementById('services-grid');
   
