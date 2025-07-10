@@ -14,19 +14,21 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="./js/slider.js"></script>
+    <script src="./js/services.js"></script>
     <style>
         .center-slide {
             transform: scale(1.1);
             filter: blur(0);
             opacity: 1;
             z-index: 10;
-          }
-          .side-slide {
+        }
+
+        .side-slide {
             transform: scale(0.8);
             filter: blur(2px);
             opacity: 0.6;
             z-index: 5;
-          }
+        }
     </style>
 
 
@@ -308,39 +310,8 @@
                 <!-- Additional Services -->
                 <div class="mt-16" data-aos="fade-up">
                     <h3 class="text-2xl font-bold mb-6 text-center">Additional Services</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                        <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-md transition">
-                            <i class="fas fa-chart-line text-blue-600 text-2xl mb-3"></i>
-                            <p>Management Reporting System</p>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-md transition">
-                            <i class="fas fa-cogs text-blue-600 text-2xl mb-3"></i>
-                            <p>Machine Maintenance</p>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-md transition">
-                            <i class="fas fa-clock text-blue-600 text-2xl mb-3"></i>
-                            <p>Time and Action</p>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-md transition">
-                            <i class="fas fa-users text-blue-600 text-2xl mb-3"></i>
-                            <p>HRMS</p>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-md transition">
-                            <i class="fas fa-clipboard-check text-blue-600 text-2xl mb-3"></i>
-                            <p>Compliance Management</p>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-md transition">
-                            <i class="fas fa-id-card text-blue-600 text-2xl mb-3"></i>
-                            <p>Visitor Management</p>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-md transition">
-                            <i class="fas fa-store text-blue-600 text-2xl mb-3"></i>
-                            <p>Virtual Showroom</p>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-md transition">
-                            <i class="fas fa-handshake text-blue-600 text-2xl mb-3"></i>
-                            <p>Vendor Portal</p>
-                        </div>
+                    <div id="services-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <!-- Dynamic services will render here -->
                     </div>
                 </div>
             </div>
@@ -512,11 +483,11 @@
                 <div class="w-full max-w-6xl mx-auto px-4 overflow-hidden">
                     <h2 class="text-3xl font-bold text-center mb-8">🎓 Student Success Stories</h2>
                     <div id="slider-wrapper" class="relative">
-                      <div id="slider" class="flex gap-6">
-                        <!-- Slides will be injected here -->
-                      </div>
+                        <div id="slider" class="flex gap-6">
+                            <!-- Slides will be injected here -->
+                        </div>
                     </div>
-                  </div>
+                </div>
             </div>
         </section>
 
