@@ -746,6 +746,14 @@
             </div>
         </div>
     </footer>
+     <script>
+  window.onload = function () {
+    emailjs.init({
+      publicKey: "fuES_T0bTOy9yFjbE" // ✅ Replace with your actual Public Key
+    });
+  };
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script>
         // Initialize AOS
@@ -864,12 +872,7 @@
       
       
 
-        window.onload = function () {
-    emailjs.init({
-      publicKey: "fuES_T0bTOy9yFjbE" // ✅ Replace with your actual Public Key
-    });
-            alert("connteced")
-  };
+      
 
         function sendemail(event) {
             event.preventDefault(); // Stop form reload
@@ -887,7 +890,7 @@
 
 
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+   
 
 
 </body>
