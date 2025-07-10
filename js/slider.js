@@ -27,6 +27,10 @@ const students = [
   ];
   
   const slider = document.getElementById('slider');
+  console.log("Slider element:");
+  if (!slider) {
+    console.log("Slider element not found");
+  }
   
   // ✅ Render Slides
   students.forEach((student) => {
