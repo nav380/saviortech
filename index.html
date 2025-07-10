@@ -625,7 +625,7 @@
                     <div class="md:w-1/2" data-aos="fade-left">
                         <div class="bg-white p-8 rounded-lg shadow-lg">
                             <h3 class="text-2xl font-bold mb-6">Get in touch </h3>
-                            <form id="contact-form" onsubmit="sendemail()">
+                            <form id="contact-form" onSubmit="sendemail">
                                 <div class="mb-4">
                                     <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
                                     <input type="text" id="name"
@@ -861,19 +861,12 @@
         // Initialize carousel
         updateCarousel(false);
 
-        // Form submission
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                contactForm.reset();
-            });
-        }
+
 
         function sendemail() {
             // Prevent default form submission
             event.preventDefault();
+            alert('Sending email...');
 
 
 
@@ -895,9 +888,10 @@
                     alert('Failed to send email.');
                 });
 
-           
+
         }
     </script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </body>
 
 </html>
