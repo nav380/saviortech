@@ -625,32 +625,32 @@
                     <div class="md:w-1/2" data-aos="fade-left">
                         <div class="bg-white p-8 rounded-lg shadow-lg">
                             <h3 class="text-2xl font-bold mb-6">Get in touch </h3>
-                            <form id="contact-form" onSubmit="sendemail()">
+                            <form id="contact-form" onsubmit="sendemail(event)">
                                 <div class="mb-4">
                                     <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
-                                    <input type="text" id="name"
+                                    <input type="text" id="name" name="user_name"
                                         class="input-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                        placeholder="Enter your name">
+                                        placeholder="Enter your name" required>
                                 </div>
                                 <div class="mb-4">
                                     <label for="email" class="block text-gray-700 font-medium mb-2">Email
                                         Address</label>
-                                    <input type="email" id="email"
+                                    <input type="email" id="email" name="user_email"
                                         class="input-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                        placeholder="Enter your email">
+                                        placeholder="Enter your email" required>
                                 </div>
                                 <div class="mb-4">
                                     <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
-                                    <input type="tel" id="phone"
+                                    <input type="tel" id="phone" name="user_phone"
                                         class="input-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                        placeholder="Enter your phone number">
+                                        placeholder="Enter your phone number" required>
                                 </div>
                                 <div class="mb-6">
                                     <label for="message" class="block text-gray-700 font-medium mb-2">Your
                                         Message</label>
-                                    <textarea id="message" rows="4"
+                                    <textarea id="message" name="message" rows="4"
                                         class="input-focus w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                                        placeholder="Tell us about your project"></textarea>
+                                        placeholder="Tell us about your project" required></textarea>
                                 </div>
                                 <button type="submit"
                                     class="btn-primary w-full text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center bg-blue-700">
@@ -658,6 +658,7 @@
                                     <i class="fas fa-paper-plane ml-2"></i>
                                 </button>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -863,35 +864,29 @@
 
 
 
-        function sendemail() {
-            // Prevent default form submission
-            event.preventDefault();
-            alert('Sending email...');
 
+        emailjs.init({
+            publicKey: "fuES_T0bTOy9yFjbE" // Replace with your Public Key
+        });
 
+        function sendemail(event) {
+            event.preventDefault(); // Stop form reload
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
-
-            emailjs.send('service_faoo49p', 'template_sfcfxjr', {
-                user_name: name,
-                user_email: email,
-                user_phone: phone,
-                message: message
-            }, 'fuES_T0bTOy9yFjbE')
+            // Send the form data
+            emailjs.sendForm('service_faoo49p', 'template_sfcfxjr', document.getElementById('contact-form'))
                 .then(() => {
-                    alert('Email sent successfully!');
+                    alert('Your message has been sent successfully!');
+                    document.getElementById('contact-form').reset(); // Clear the form
                 }, (error) => {
                     console.error('FAILED...', error);
-                    alert('Failed to send email.');
+                    alert('Oops! Failed to send message. Please try again.');
                 });
-
-
         }
+
+
     </script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 </body>
 
 </html>
