@@ -183,7 +183,7 @@
             style="background-image: url('./images/landing1.jpeg'); background-size: cover; background-position: center;">
 
             <h1 class="relative z-10 text-black text-5xl font-bold">Welcome to Placement Help</h1>
-            <div class="absolute bottom-0 rounded-t-4xl h-8 w-full bg-white text-white text-center">
+            <div id="scrollElement" class="absolute bottom-0 rounded-t-4xl h-8 w-full bg-white text-white text-center">
                 heloo
                 
                 
@@ -896,6 +896,23 @@
         function closePopup() {
             document.getElementById('popup').classList.add('hidden'); // Hide popup
         }
+
+
+        window.addEventListener('scroll', () => {
+            const element = document.getElementById('scrollElement');
+            const scrollPosition = window.scrollY;
+        
+            if (scrollPosition > 100) {
+                // When scrolled down more than 100px
+                element.classList.remove('mx-4');
+                element.classList.add('mx-0');
+            } else {
+                // When scrolled back to top
+                element.classList.remove('mx-0');
+                element.classList.add('mx-4');
+            }
+        });
+        
 
 
     </script>
