@@ -664,6 +664,19 @@
                 </div>
             </div>
         </section>
+
+        <!-- Popup Modal -->
+        <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-2xl font-bold mb-2 text-green-600">🎉 Thank You!</h3>
+                <p class="text-gray-700 mb-4">Your message has been sent successfully.</p>
+                <button onclick="closePopup()"
+                    class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
+                    Close
+                </button>
+            </div>
+        </div>
+
     </main>
 
     <!-- Footer -->
@@ -746,13 +759,13 @@
             </div>
         </div>
     </footer>
-     <script>
-  window.onload = function () {
-    emailjs.init({
-      publicKey: "r0tvVuUog4Qi_maFT" // ✅ Replace with your actual Public Key
-    });
-  };
-</script>
+    <script>
+        window.onload = function () {
+            emailjs.init({
+                publicKey: "r0tvVuUog4Qi_maFT" // ✅ Replace with your actual Public Key
+            });
+        };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script>
@@ -867,20 +880,21 @@
             }
         });
 
-        // Initialize carousel
-        
-      
-      
 
-      
 
+
+
+
+
+        // Function to send email using EmailJS
         function sendemail(event) {
             event.preventDefault(); // Stop form reload
 
             // Send the form data
             emailjs.sendForm('service_faoo49p', 'template_sfcfxjr', document.getElementById('contact-form'))
                 .then(() => {
-                    alert('Your message has been sent successfully!');
+                    console.log('SUCCESS!');
+                    showPopup(event); // Show popup on success
                     document.getElementById('contact-form').reset(); // Clear the form
                 }, (error) => {
                     console.error('FAILED...', error);
@@ -888,9 +902,20 @@
                 });
         }
 
+        // Function to show popup
+        function showPopup(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+            document.getElementById('popup').classList.remove('hidden'); // Show popup
+            document.getElementById('contact-form').reset(); // Clear the form
+        }
+
+        function closePopup() {
+            document.getElementById('popup').classList.add('hidden'); // Hide popup
+        }
+
 
     </script>
-   
+
 
 
 </body>
