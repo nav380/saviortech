@@ -52,9 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sticky background image change
     const bg = document.getElementById('sticky-bg');
     const images = [
-        "url('../images/landing1.jpg')",
-        "url('../images/landing2.jpg')",
-        "url('../images/landing3.jpg')",
+        "url('./images/landing1.jpg')",
+        "url('./images/landing2.jpg')",
+        "url('./images/landing3.jpg')",
         
     ];
     let current = 0;
