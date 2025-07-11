@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosmic Contact Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    .animate-gradient-shift { animation: gradientShift 8s ease infinite; }
+    .animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
+  </style>
+</head>
+<body class="relative bg-gradient-to-br from-purple-900 via-pink-900 to-indigo-900 min-h-screen overflow-hidden">
+
+  <!-- Canvas for Particle Background -->
+  <canvas id="particleCanvas" class="absolute inset-0 pointer-events-none"></canvas>
+
+  <!-- Floating Orbs -->
+  <div class="absolute top-10 left-10 w-80 h-80 bg-gradient-to-r from-pink-500/30 via-purple-500/20 to-cyan-500/30 rounded-full mix-blend-screen blur-3xl animate-gradient-shift"></div>
+
+  <!-- Twinkling Stars -->
+  <div id="stars"></div>
+
+  <!-- Form Container -->
+  <div class="relative z-10 flex items-center justify-center min-h-screen">
+    <form id="contactForm" class="bg-white/10 backdrop-blur-2xl p-8 rounded-3xl shadow-2xl w-full max-w-lg">
+      <h1 class="text-white text-4xl font-bold text-center mb-6">Contact Us</h1>
+      
+      <div class="mb-4">
+        <label class="block text-white mb-2" for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required
+          class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-500">
+      </div>
+      
+      <div class="mb-4">
+        <label class="block text-white mb-2" for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required
+          class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+      </div>
+      
+      <div class="mb-4">
+        <label class="block text-white mb-2" for="message">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Your message here..." required
+          class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+      </div>
+      
+      <button type="submit"
+        class="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white font-bold hover:scale-105 transform transition">
+        Send Message
+      </button>
+    </form>
+  </div>
+
+  <script>
+    // Canvas Particle Animation
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = Array.from({ length: 100 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 2 + 0.5,
+      hue: Math.random() * 360
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.hue += 0.5;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${p.hue}, 70%, 60%, 0.8)`;
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Twinkling Stars
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 50; i++) {
+      const star = document.createElement('div');
+      star.className = "absolute bg-white rounded-full animate-twinkle";
+      star.style.left = `${Math.random() * window.innerWidth}px`;
+      star.style.top = `${Math.random() * window.innerHeight}px`;
+      star.style.width = star.style.height = `${Math.random() * 3 + 1}px`;
+      starsContainer.appendChild(star);
+    }
+
+    // Form Submission
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      alert("✨ Message Sent! ✨");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
