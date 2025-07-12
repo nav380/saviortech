@@ -46,12 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
 
         const cardHTML = `
-        <div class="bg-white rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-in-out" data-aos="fade-up" data-aos-delay="${delay}">
+        <div class="bg-white rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-900 ease-out group" data-aos="fade-up" data-aos-delay="${delay}">
             <div class="p-6">
                 <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                    <i class="${service.icon} text-blue-600 text-2xl"></i>
+                    <i class="${service.icon} text-blue-600 text-2xl group-hover:scale-110 "></i>
                 </div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">${service.title}</h3>
+                <h3 class="text-xl font-bold mb-2 text-gray-800 group-hover:text-blue-500 ">${service.title}</h3>
                 <p class="text-gray-600 mb-4">${service.description}</p>
                 <ul class="space-y-1 mb-4">
                     ${featuresHTML}
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = `
             bg-white p-5 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 
-            transition-all duration-300 ease-in-out flex flex-col items-center text-center space-y-3
+            transition-all duration-700 ease-in-out flex flex-col items-center text-center space-y-3 hover:bg-blue-100 bg-glue-400
         `;
         card.setAttribute("data-aos", "fade-up");
         card.setAttribute("data-aos-delay", delay);

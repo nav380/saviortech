@@ -1,3 +1,58 @@
 *{
     scroll-behavior: smooth;
 }
+@keyframes wave {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(15deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(15deg);
+    }
+
+    80% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+.wave-hand {
+    animation: wave 1.5s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+.center-slide {
+    transform: scale(1.1);
+    filter: blur(0);
+    opacity: 1;
+    z-index: 10;
+}
+
+.side-slide {
+    transform: scale(0.8);
+    filter: blur(2px);
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.bg-slider {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* STICKY */
+    transition: background-image 1s ease-in-out;
+    /* Smooth fade */
+}
+
