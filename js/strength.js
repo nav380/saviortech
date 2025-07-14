@@ -46,25 +46,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     strengths.forEach((strength, index) => {
         const delay = (index + 1) * 100; // AOS stagger
-
+    
         const pointsHTML = strength.points.map(point => `
             <li class="flex items-start text-gray-600">
-                <i class="fas fa-check-circle text-blue-500 mr-2 mt-1"></i>
+                <i class="fas fa-check-circle text-cyan-500 mr-3 mt-1"></i>
                 <span>${point}</span>
             </li>
         `).join('');
-
+    
         const cardHTML = `
-        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-in-out group" data-aos="fade-up" data-aos-delay="${delay}">
-            <div class="text-4xl mb-4 ${strength.color}">
-                <i class="${strength.icon} group-hover:scale-110 transition-transform duration-300"></i>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl border border-gray-100
+                    transform hover:-translate-y-2 hover:scale-105 transition-all duration-500 ease-in-out group"
+             data-aos="fade-up" data-aos-delay="${delay}">
+            <!-- Icon -->
+            <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-cyan-100 to-blue-100 
+                        flex items-center justify-center mb-5 shadow-inner">
+                <i class="${strength.icon} ${strength.color} text-2xl transition-transform duration-500 group-hover:scale-125"></i>
             </div>
-            <h4 class="text-xl font-semibold text-gray-800 mb-3 group-hover:text-blue-700 transition-colors duration-300">${strength.title}</h4>
+            <!-- Title -->
+            <h4 class="text-lg font-bold text-gray-800 mb-3 group-hover:text-cyan-600 transition-colors duration-300">
+                ${strength.title}
+            </h4>
+            <!-- Points -->
             <ul class="space-y-2 text-sm leading-relaxed">
                 ${pointsHTML}
             </ul>
         </div>`;
-
+    
         strengthsGrid.innerHTML += cardHTML;
     });
+    
 });

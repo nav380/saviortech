@@ -21,15 +21,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loopSlides.forEach(student => {
         const card = document.createElement('div');
-        card.className = "slide w-72 flex-shrink-0 p-4 bg-white rounded-lg shadow-lg text-center";
+        card.className = `
+            slide w-72 flex-shrink-0 bg-white rounded-2xl shadow-xl 
+            text-center p-6 transform hover:scale-105 transition-transform duration-300
+            border border-gray-100
+        `;
         card.innerHTML = `
-        <img src="${student.photo}" alt="${student.name}" class="w-24 h-24 mx-auto rounded-full mb-4">
-        <h3 class="text-xl font-bold">${student.name}</h3>
-        <p class="text-sm text-gray-500 mb-2">${student.role}</p>
-        <p class="text-gray-700">“${student.review}”</p>
-      `;
+            <div class="relative">
+                <img src="${student.photo}" alt="${student.name}"
+                     class="w-24 h-24 mx-auto rounded-full border-4 border-cyan-400 shadow-lg">
+                <div class="absolute top-0 right-0 bg-cyan-500 text-white text-xs px-2 py-1 rounded-bl-lg">
+                    ★
+                </div>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-gray-800">${student.name}</h3>
+            <p class="text-sm text-cyan-600 font-medium mb-2">${student.role}</p>
+            <p class="text-gray-600 italic">“${student.review}”</p>
+        `;
         slider.appendChild(card);
     });
+    
 
     const slideWidth = slider.querySelector('.slide').offsetWidth + 24; // slide width + gap
     let offset = 0;

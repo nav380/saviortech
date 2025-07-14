@@ -38,32 +38,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     services.forEach((service, index) => {
         const delay = (index + 1) * 100;
-
+    
         const featuresHTML = service.features.map(feature => `
             <li class="flex items-center text-gray-600">
-                <i class="fas fa-check-circle text-blue-500 mr-2"></i> ${feature}
+                <i class="fas fa-check-circle text-cyan-500 mr-2"></i> ${feature}
             </li>
         `).join('');
-
+    
         const cardHTML = `
-        <div class="bg-white rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-900 ease-out group" data-aos="fade-up" data-aos-delay="${delay}">
-            <div class="p-6">
-                <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                    <i class="${service.icon} text-blue-600 text-2xl group-hover:scale-110 "></i>
+        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-700 ease-out group border border-gray-100" data-aos="fade-up" data-aos-delay="${delay}">
+            <div class="p-6 flex flex-col h-full justify-between">
+                <!-- Icon -->
+                <div class="w-16 h-16 bg-gradient-to-tr from-cyan-100 to-blue-100 rounded-full flex items-center justify-center mb-5 shadow-inner">
+                    <i class="${service.icon} text-cyan-600 text-2xl transition-transform duration-500 group-hover:rotate-6 group-hover:scale-125"></i>
                 </div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800 group-hover:text-blue-500 ">${service.title}</h3>
-                <p class="text-gray-600 mb-4">${service.description}</p>
-                <ul class="space-y-1 mb-4">
+                <!-- Title -->
+                <h3 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-cyan-600">${service.title}</h3>
+                <!-- Description -->
+                <p class="text-gray-500 mb-4 text-sm">${service.description}</p>
+                <!-- Features -->
+                <ul class="space-y-1 mb-5">
                     ${featuresHTML}
                 </ul>
-                <a href="#contact" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
-                    Learn More <i class="fas fa-arrow-right ml-2"></i>
+                <!-- Learn More Button -->
+                <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500 text-white hover:bg-cyan-600 transition-colors duration-300 shadow-md">
+                    Learn More <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </div>`;
-
+    
         servicesGrid.innerHTML += cardHTML;
     });
+    
 
     // === Additional Services with Icons ===
     const additionalServices = [
@@ -85,22 +91,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     additionalServices.forEach((service, index) => {
         const delay = (index + 1) * 50;
-
+    
         const card = document.createElement('div');
         card.className = `
-            bg-white p-5 rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 
-            transition-all duration-700 ease-in-out flex flex-col items-center text-center space-y-3 hover:bg-blue-100 bg-glue-400
+            bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl 
+            transform hover:-translate-y-2 hover:scale-105 transition-all duration-500 ease-in-out
+            flex flex-col items-center text-center space-y-4 border border-gray-100
         `;
         card.setAttribute("data-aos", "fade-up");
         card.setAttribute("data-aos-delay", delay);
-
+    
         card.innerHTML = `
-            <div class="text-blue-600 text-3xl">
-                <i class="${service.icon}"></i>
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center shadow-md">
+                <i class="${service.icon} text-white text-2xl"></i>
             </div>
-            <h4 class="text-base font-semibold text-gray-800">${service.title}</h4>
+            <h4 class="text-lg font-bold text-gray-800">${service.title}</h4>
         `;
-
+    
         grid.appendChild(card);
     });
+    
 });
