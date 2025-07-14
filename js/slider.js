@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.className = `
             slide w-72 flex-shrink-0 bg-white rounded-2xl shadow-xl 
             text-center p-6 transform hover:scale-105 transition-transform duration-300
-            border border-gray-100
+            border border-gray-100 p-2
         `;
         card.innerHTML = `
             <div class="relative">
