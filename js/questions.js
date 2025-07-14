@@ -28,11 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     questions.forEach((question, index) => {
         const button = document.createElement('button');
-        button.textContent = question;
-        button.className = "bg-indigo-500 text-white px-5 py-3 rounded-lg shadow hover:bg-indigo-600 transition w-full ";
+        button.innerHTML = `<i class="fas fa-question-circle text-cyan-500"></i> ${question}`;
+        button.className = `
+            bg-white shadow hover:shadow-lg p-5 rounded-xl text-gray-700 
+            font-medium border border-gray-200 hover:bg-cyan-50 
+            transition flex items-center gap-3 w-full
+        `;
         button.onclick = () => speak(index);
         container.appendChild(button);
     });
+    
 });
 
 // Make speak globally available

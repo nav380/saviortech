@@ -52,27 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Sticky background image change
-  // Sticky background image change
-const bg = document.getElementById('sticky-bg');
-const images = [
-    "url('images/landing1.jpeg')",
-    "url('images/landing2.jpeg')",
-    "url('images/landing3.jpeg')"
-];
-
-let current = 0;
-
-// Set initial background
-bg.style.backgroundImage = images[current];
-bg.style.backgroundSize = "cover";
-bg.style.backgroundPosition = "center";
-bg.style.transition = "background-image 1s ease-in-out";
-
-// Change background every 5 seconds
-setInterval(() => {
-    current = (current + 1) % images.length;
-    bg.style.backgroundImage = images[current];
-}, 5000);
+ 
 
 
 });
