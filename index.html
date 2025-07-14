@@ -504,13 +504,13 @@
                             <h3 class="text-3xl font-bold text-gray-800 mb-6">Send a Message</h3>
                             <form id="contact-form" onsubmit="sendemail(event)"
                                 class="space-y-4 flex-1 flex flex-col justify-between">
-                                <input type="text" placeholder="Your Name" required
+                                <input type="text" placeholder="Your Name" required name="from_name"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition" />
-                                <input type="email" placeholder="Email Address" required
+                                <input type="email" placeholder="Email Address" required name="reply_to"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition" />
-                                <input type="tel" placeholder="Phone Number" required
+                                <input type="tel" placeholder="Phone Number" required name="phone"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
-                                <textarea placeholder="Your Message" rows="4" required
+                                <textarea placeholder="Your Message" rows="4" required name="message"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 transition"></textarea>
                                 <button type="submit"
                                     class="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 rounded-lg hover:scale-105 transition">
@@ -754,6 +754,7 @@
         // Function to send email using EmailJS
         function sendemail(event) {
             event.preventDefault(); // Stop form reload
+            console.log(document.getElementById('contact-form'));
 
             // Send the form data
             emailjs.sendForm('service_faoo49p', 'template_sfcfxjr', document.getElementById('contact-form'))
