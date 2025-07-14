@@ -36,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Make speak globally available
+// Make typingTimer global
+let typingTimer;
+
 function speak(index) {
     const dialog = document.getElementById("dialog-text");
     const speechBubble = document.getElementById("speech-bubble");
@@ -45,7 +48,6 @@ function speak(index) {
         console.error("One or more elements not found: dialog, speechBubble, hand");
         return;
     }
-
 
     // Hide waving hand
     hand.style.display = "none";
@@ -58,10 +60,28 @@ function speak(index) {
         speechBubble.style.transform = "scale(1)";
     }, 400);
 
-    // Set the answer text after scale-up animation starts
-    setTimeout(() => {
-        dialog.textContent = answers[index];
-    }, 200);
+    // Start typing text
+    function startTyping(text) {
+        let currentChar = 0;
+        dialog.textContent = ''; // clear existing text
+
+        // Clear any previous typing animation
+        if (typingTimer) clearTimeout(typingTimer);
+
+        function typeLetters() {
+            if (currentChar < text.length) {
+                dialog.textContent += text[currentChar]; // add next letter
+                currentChar++;
+                typingTimer = setTimeout(typeLetters, 50); // delay between letters
+                console.log(`Typing letter: ${text[currentChar - 1]}`); // log current letter
+            }
+        }
+
+        setTimeout(typeLetters, 100); // initial delay before typing starts
+    }
+
+    // Call with your current answer
+    startTyping(answers[index]);
 }
 
 

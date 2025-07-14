@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    
     const students = [
         { name: "Alice Johnson", role: "Web Developer", photo: "https://randomuser.me/api/portraits/women/44.jpg", review: "This course changed my life! I now work at a top tech company." },
         { name: "David Smith", role: "UI/UX Designer", photo: "https://randomuser.me/api/portraits/men/32.jpg", review: "Amazing! I built my portfolio and got hired fast." },

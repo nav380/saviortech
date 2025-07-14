@@ -56,3 +56,6 @@
     /* Smooth fade */
 }
 
+section {
+    scroll-snap-align: start;
+}
