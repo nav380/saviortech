@@ -1,6 +1,15 @@
 *{
     scroll-behavior: smooth;
+
+    
 }
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+   
+}
+
 @keyframes wave {
     0% {
         transform: rotate(0deg);
