@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function updateTestimonials() {
             testimonials.forEach((item, index) => {
-                item.classList.remove('active', 'left1', 'left2', 'right1', 'right2', 'hidden');
+                item.classList.remove('active', 'left1', 'left2', 'right1', 'right2', 'hide');
 
                 if (index === current) {
                     item.classList.add('active');
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (index === (current + 2) % testimonials.length) {
                     item.classList.add('right2');
                 } else {
-                    item.classList.add('hidden');
+                    item.classList.add('hide');
                 }
             });
         }
