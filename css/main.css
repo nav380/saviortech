@@ -1,16 +1,17 @@
-*{
+* {
     scroll-behavior: smooth;
-    gap: 0;
 
-    
+
 }
-html, body {
+
+html,
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    width: 100vw;
-  }
-  
+    overflow-x: hidden;
+}
+
 
 @keyframes wave {
     0% {
@@ -118,26 +119,26 @@ section {
 .rocket {
     position: relative;
     animation: fly-up 2s ease-out forwards;
-  }
-  
-  @keyframes fly-up {
+}
+
+@keyframes fly-up {
     0% {
-      transform: translateY(0);
-      opacity: 1;
+        transform: translateY(0);
+        opacity: 1;
     }
+
     100% {
-      transform: translateY(-120vh); /* Fly far up */
-      opacity: 0;
+        transform: translateY(-120vh);
+        /* Fly far up */
+        opacity: 0;
     }
-  }
-  
-  .change-rocket {
+}
+
+.change-rocket {
     opacity: 0;
     transition: opacity 1s ease-in-out;
-  }
-  .change-rocket.show {
-    opacity: 1;
-  }
-  
-  
+}
 
+.change-rocket.show {
+    opacity: 1;
+}
