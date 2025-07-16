@@ -91,7 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3 class="text-xl font-bold mb-1 group-hover:text-yellow-600">${option.title}</h3>
                 <!-- Amount -->
                 <div class="flex items-center space-x-2 mb-3">
-                    <p class="text-2xl font-extrabold text-yellow-600">${option.amount}</p>
+                    p class="text-2xl font-extrabold text-yellow-600">
+        ${option.amount} <span class="text-sm font-medium text-gray-500">+ GST</span>
+    </p>
+    <p class
                     <p class="text-sm line-through text-gray-400">${option.originalAmount}</p>
                 </div>
                 <!-- Description -->
