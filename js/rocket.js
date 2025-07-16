@@ -3,22 +3,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const rocket = document.querySelector('.rocket');
   const changeRocket = document.querySelector('.change-rocket');
 
-  const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              // Start rocket fly-up animation
-              rocket.classList.add('fly-up');
+  if (rocketContainer && rocket && changeRocket) {
+      const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  console.log('🔥 Section in view: Starting rocket animation');
 
-              // After fly-up ends, fade in the second image
-              rocket.addEventListener('animationend', () => {
-                  changeRocket.classList.add('show');
-              });
+                  // Start fly-up animation
+                  rocket.classList.add('fly-up');
 
-              // Stop observing once triggered
-              observer.unobserve(rocketContainer);
-          }
+                  // Fade in second image after rocket flies up
+                  rocket.addEventListener('animationend', () => {
+                      changeRocket.classList.add('show');
+                  });
+
+                  // Only trigger once
+                  observer.unobserve(rocketContainer);
+              }
+          });
+      }, {
+          threshold: 0.4 // Trigger when 40% of section is visible
       });
-  }, { threshold: 0.3 }); // Trigger when 30% of container visible
 
-  observer.observe(rocketContainer);
+      observer.observe(rocketContainer);
+  }
 });
