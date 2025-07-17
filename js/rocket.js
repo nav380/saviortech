@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
               }
           });
       }, {
-          threshold: 0.4 // Trigger when 40% of section is visible
+          threshold: 0.1 // Trigger when 40% of section is visible
       });
 
       observer.observe(rocketContainer);

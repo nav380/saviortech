@@ -117,44 +117,31 @@ section {
 }
 
 
-
-/* Rocket fly up animation */
+/* 🚀 Rocket fly-up animation with smoother transitions */
 @keyframes fly-up {
     0% {
-        transform: translateY(40vh)  scale(1);
+        transform: translateY(40vh) scale(1);
         opacity: 1;
     }
-    25% {
-        transform: translateY(35vh)  scale(1.05);
-        opacity: 0.9;
-    }
-    50% {
-        transform: translateY(20vh)  scale(0.95);
-        opacity: 0.7;
-    }
-    75% {
-        transform: translateY(-10vh)  scale(1.03);
-        opacity: 0.4;
-    }
+    
     100% {
-        transform: translateY(-40vh)  scale(1);
+        transform: translateY(-50vh) scale(1);
         opacity: 0;
     }
 }
 
-
 .rocket {
-    transition: opacity 2s ease-in-out, transform 1s ease-in-out;
+    transition: opacity 2s ease-in-out, transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .rocket.fly-up {
-    animation: fly-up 2s ease-in-out forwards;
+    animation: fly-up 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Change-rocket fade in */
+/* 📸 Smooth fade in */
 .change-rocket {
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1.5s ease-in-out;
     position: absolute;
     top: 0;
     left: 0;
