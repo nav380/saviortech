@@ -116,11 +116,7 @@ section {
     z-index: 1;
 }
 
-.rocket {
-    position: relative;
-    z-index: 50;
-    animation: fly-up 5s ease-out ;
-}
+
 
 /* Rocket fly up animation */
 @keyframes fly-up {
